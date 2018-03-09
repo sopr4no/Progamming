@@ -19,7 +19,7 @@ namespace GoneHome
         public void ResetLevel()
         {
             //Grab all enemies and reset them
-            Enemy[] enemies = FindObjectsOfType<Enemy>();
+            FollowEnemy[] enemies = FindObjectsOfType<FollowEnemy>();
             for (int i = 0; i < enemies. Length; i++)
             {
                 //Reset

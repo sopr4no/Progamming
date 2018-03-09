@@ -9,9 +9,9 @@ namespace GoneHome
     {
         public float acceleration = 10f;
         public float maxVelocity = 20f;
+        public GameObject deathParticles; // Explosion prefab
 
         private Rigidbody rigid;
-
         private Vector3 spawnPoint; // ADDED THIS
 
         // Use this for initialization
@@ -47,6 +47,10 @@ namespace GoneHome
 
         public void Reset()
         {
+            // Spawn death particles here 
+            GameObject clone = Instantiate(deathParticles);
+            // Set position of particles to player position 
+            clone.transform.position = transform.position; 
             //Rest position back to spawn point
             transform.position = spawnPoint;
             // Reset the player's velocity
