@@ -563,6 +563,9 @@
   <object id="23" x="464" y="704" width="16" height="112"/>
   <object id="24" x="144" y="800" width="16" height="240"/>
  </objectgroup>
+ <objectgroup name="GroundCollision"/>
+ <objectgroup name="PlatformCollision"/>
+ <objectgroup name="LadderCollision"/>
  <objectgroup name="GroundCollision">
   <object id="5" x="286.75" y="784.5">
    <polygon points="1.25,-0.5 -62.75,-0.5 -126.75,31.5 -126.75,159.5 -94.75,159.5 -94.75,191.5 -78.75,191.5 -78.75,175.5 353.25,175.5 353.25,271.5 304.75,271.5 305.25,239.5 273.25,239.5 273.25,271.5 -78.75,271.5 -78.75,255.5 -94.75,255.5 -94.75,271.5 -142.75,271.5 -142.75,319.5 529.25,319.5 529.25,-0.5 353.25,-0.5 306.5,47.5 49.25,47.5"/>
