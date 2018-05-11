@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace SunnyLand
 {
-
-
     public class PlayerController : MonoBehaviour
     {
         public float speed = 5f;
@@ -15,10 +13,10 @@ namespace SunnyLand
         public float maxSlopeAngle = 45f;
         [Header("Grounding")] // Attributes
         public float rayDistance = .25f;
-        public bool isGround = false;
+        public bool isGrounded = false;
         public bool isOnSlope = false;
-        [Header("Crounch")]
-        public bool isCrounching = false;
+        [Header("Crouch")]
+        public bool isCrouching = false;
         [Header("Jump")]
         public float jumpHeight = 2f;
         public int maxJumpCount = 2;
@@ -42,12 +40,11 @@ namespace SunnyLand
             rend = GetComponent<SpriteRenderer>();
             rigid = GetComponent<Rigidbody2D>();
         }
-
         // Update is called once per frame
         void Update()
         {
-            //Update is called once per frame
-            PerfomMove();
+            // Constantly update player mechanics
+            PerformMove();
         }
         void FixedUpdate()
         {
@@ -55,10 +52,10 @@ namespace SunnyLand
         }
         void OnDrawGizmos()
         {
-            // Draw the ground ray 
-            Ray groundRay = new Ray(transform. position, Vector3.down);
+            // Draw the ground ray
+            Ray groundRay = new Ray(transform.position, Vector3.down);
             Gizmos.DrawLine(groundRay.origin, groundRay.origin + groundRay.direction * rayDistance);
-            // Draw the 'right' direction 
+            // Draw the 'right' direction
             Vector3 right = Vector3.Cross(groundNormal, Vector3.forward);
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(transform.position - right,
@@ -66,8 +63,8 @@ namespace SunnyLand
         }
         #endregion
 
-        #region Custom Functions 
-        // Inputs 
+        #region Custom Functions
+        // Inputs
         public void Jump()
         {
 
@@ -82,16 +79,16 @@ namespace SunnyLand
         }
         public void Move(float horizontal)
         {
-            // If there is horizontal input 
-            if (horizontal != 0)
+            // If there is horizontal input
+            if(horizontal != 0)
             {
-                // Flip the sprite based on input direction 
+                // Flip the sprite based on input direction
                 rend.flipX = horizontal < 0;
             }
-            // Store the horizontal input for Later 
-            inputH = horizontal; 
+            // Store the horizontal input for later
+            inputH = horizontal;
         }
-        public void Climb (float vertical)
+        public void Climb(float vertical)
         {
 
         }
@@ -99,22 +96,21 @@ namespace SunnyLand
         {
 
         }
-        //Actions
+        // Actions
         void PerformClimb()
         {
 
         }
-        void PerfomMove()
+        void PerformMove()
         {
-            // Calculate 'right' depending on ground surface normal 
+            // Calculate 'right' depending on ground surface normal
             Vector3 right = Vector3.Cross(groundNormal, Vector3.forward);
-            // Add force in the direction of horizontal movement 
+            // Add force in the direction of horizontal movement
             rigid.AddForce(right * inputH * speed);
-            //Limit the velocity 
+            // Limit the velocity
             LimitVelocity();
-
         }
-        void PerfomJump()
+        void PerformJump()
         {
 
         }
@@ -138,18 +134,16 @@ namespace SunnyLand
         // Helpers
         void LimitVelocity()
         {
-            // Copy current velocity to smaller variable name 
+            // Copy current velocity to smaller variable name
             Vector3 vel = rigid.velocity;
-            // Check if velocity reached max vel 
+            // Check if velocity reached max vel
             if (vel.magnitude > maxVelocity)
             {
-                // Cap the velocity 
+                // Cap the velocity
                 vel = vel.normalized * maxVelocity;
-            
             }
-            // Overwrite old velocity 
-            rigid.velocity = vel; 
-
+            // Overwrite old velocity
+            rigid.velocity = vel;
         }
         void StopClimbing()
         {
@@ -163,7 +157,6 @@ namespace SunnyLand
         {
 
         }
-        #endregion 
+        #endregion
     }
-
 }
