@@ -75,6 +75,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\-AHundredBalls\Scripts\Ball.cs" />
+    <Compile Include="Assets\-AHundredBalls\Scripts\Bucket.cs" />
+    <Compile Include="Assets\-AHundredBalls\Scripts\Paddle.cs" />
+    <Compile Include="Assets\-AHundredBalls\Scripts\Spawner.cs" />
     <Compile Include="Assets\AsteriodSpawner.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\GetSetAttribute.cs" />
     <Compile Include="Assets\PostProcessing\Runtime\Attributes\MinAttribute.cs" />
