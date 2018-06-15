@@ -4,12 +4,11 @@ using UnityEngine;
 
 namespace Assessment1
 {
-
-    public class ChipTrigger : MonoBehaviour
+    public class SesameTrigger : MonoBehaviour
     {
         public void OnTriggerEnter2D(Collider2D col)
         {
-            if(col.name.Contains("Chip"))
+            if (col.name.Contains("Sesame"))
             {
                 // Adds a score
                 GameManager.score++;
@@ -18,15 +17,16 @@ namespace Assessment1
                 Destroy(col.gameObject);
             }
 
-            Destroy(col.gameObject);
 
-            if (col.name.Contains("Sesame"))
-            {  
-                // Remove score
-                 GameManager.score--; 
+            if (col.name.Contains("Chip"))
+            {
+                // Remove a score
+                GameManager.score--;
+            Destroy(col.gameObject);
             }
-           
+
 
         }
+
     }
 }
